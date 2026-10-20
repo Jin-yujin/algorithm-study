@@ -1,0 +1,53 @@
+import java.util.Scanner;
+import java.io.FileInputStream;
+
+class Solution
+{
+	public static void main(String args[]) throws Exception
+	{
+		Scanner sc = new Scanner(System.in);
+
+		for (int test_case = 1; test_case <= 10; test_case++) {
+			int tc = sc.nextInt();
+			
+			int sum = 0;
+			int[][] arr = new int[100][100];
+
+			for (int i = 0; i < 100; i++) {
+				for (int j = 0; j < 100; j++) {
+					arr[i][j] = sc.nextInt();
+				}
+			}
+
+			for (int i = 0; i < 100; i++) {
+				int hap = 0;
+				for (int j = 0; j < 100; j++) {
+					hap += arr[i][j];
+				}
+				sum = Math.max(sum, hap);
+			}
+
+			for (int i = 0; i < 100; i++) {
+				int hap = 0;
+				for (int j = 0; j < 100; j++) {
+					hap += arr[j][i];
+				}
+				sum = Math.max(sum, hap);
+			}
+
+			int hap = 0;
+			for (int i = 0; i < 100; i++) {
+				hap += arr[i][i];
+			}
+			sum = Math.max(sum, hap);
+			
+			hap = 0;
+			for (int i = 0; i < 100; i++) {
+			    hap += arr[i][99 - i];
+			}
+			sum = Math.max(sum, hap);
+
+			System.out.println("#" + tc + " " + sum);
+		}
+	}
+}
