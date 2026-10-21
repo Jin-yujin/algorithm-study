@@ -12,27 +12,25 @@ class Solution
 		for (int test_case = 1; test_case <= T; test_case++) {
 			int N = sc.nextInt();
 			int M = sc.nextInt();
-			int[][] arr = new int[N][N];
+			int[][] arr_N = new int[N][N];
 			for (int i = 0; i < N; i++) {
 				for (int j = 0; j < N; j++) {
-					arr[i][j] = sc.nextInt();
+					arr_N[i][j] = sc.nextInt();
 				}
 			}
-
 			int max = 0;
+			for (int i = 0; i <= N - M; i++) {
+				for (int j = 0; j <= N - M; j++) {
+					int sum = 0;
 
-			for (int i = 0; i < N - M + 1; i++) {
-				for (int j = 0; j < N - M + 1; j++) {
-					int hap = 0;
-					
-					for (int k = 0; k < M; k++) {
-						for (int k2 = 0; k2 < M; k2++) {
-							hap += arr[i+k][j+k2] ;
+					for (int x = i; x < i+M; x++) {
+						for (int z = j; z < j+M; z++) {
+							sum += arr_N[x][z];
 						}
 					}
-
-					if (max < hap)
-						max = hap;
+					if (sum > max) {
+						max = sum;
+					}
 				}
 			}
 			System.out.println("#" + test_case + " " + max);
