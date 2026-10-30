@@ -3,27 +3,23 @@ import java.io.FileInputStream;
 
 class Solution
 {
-	public static void main(String args[]) throws Exception {
+	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		int T;
-		T = sc.nextInt();
+		int T = sc.nextInt();
 
 		for (int test_case = 1; test_case <= T; test_case++) {
-			char[] str = sc.next().toCharArray();
-
-			for (int i = 0; i < str.length; i++) {
-				if (str[i] == 'a' || str[i] == 'e' || str[i] == 'i' || str[i] == 'o' || str[i] == 'u') {
-					str[i] = ' ';
-				}
-			}
+			String str = sc.next();
 
 			System.out.print("#" + test_case + " ");
 
-			for (int j = 0; j < str.length; j++) {
-				if (str[j] != ' ') {
-					System.out.print(str[j]);
+			for (int i = 0; i < str.length(); i++) {
+				char c = str.charAt(i);
+
+				if (c != 'a' && c != 'e' && c != 'i' && c != 'o' && c != 'u') {
+					System.out.print(c);
 				}
 			}
+
 			System.out.println();
 		}
 	}
