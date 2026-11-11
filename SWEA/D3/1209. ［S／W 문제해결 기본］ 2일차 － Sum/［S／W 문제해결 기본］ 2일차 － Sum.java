@@ -17,6 +17,9 @@ class Solution {
 				}
 			}
 
+			int sum_cross = 0;
+			int sum_re_cross = 0;
+			
 			for (int i = 0; i < 100; i++) {
 				int sum_r = 0;
 				int sum_c = 0;
@@ -25,20 +28,15 @@ class Solution {
 					sum_r += arr[i][j];
 					sum_c += arr[j][i];
 				}
+				
+				sum_cross += arr[i][i];
+				sum_re_cross += arr[99 - i][i];
 
 				max = Math.max(max, sum_r);
 				max = Math.max(max, sum_c);
+				max = Math.max(max, sum_cross);
+				max = Math.max(max, sum_re_cross);
 			}
-
-			int sum_cross = 0;
-			int sum_re_cross = 0;
-			for (int i = 0; i < 100; i++) {
-				sum_cross += arr[i][i];
-				sum_re_cross += arr[99 - i][i];
-			}
-
-			max = Math.max(max, sum_cross);
-			max = Math.max(max, sum_re_cross);
 
 			System.out.println("#" + t + " " + max);
 		}
